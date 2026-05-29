@@ -53,13 +53,16 @@ public class SecurityConfig {
                     "http://localhost:5173",
                     "http://localhost:5174",
                     "http://localhost:3000",
-                    "https://taskflow-ai-frontend-sigma.vercel.app"
+                    "https://taskflow-ai-frontend-sigma.vercel.app",
+                    "https://taskflow-ai-frontend-sigma-kedari534.vercel.app"
                 ));
                 corsConfiguration.setAllowedMethods(java.util.List.of(
-                    "GET", "POST", "PUT", "DELETE", "OPTIONS"
+                    "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
                 ));
                 corsConfiguration.setAllowedHeaders(java.util.List.of("*"));
+                corsConfiguration.setExposedHeaders(java.util.List.of("Authorization"));
                 corsConfiguration.setAllowCredentials(true);
+                corsConfiguration.setMaxAge(3600L);
                 return corsConfiguration;
             }))
             .csrf(csrf -> csrf.disable())
